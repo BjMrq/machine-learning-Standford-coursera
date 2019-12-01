@@ -29,7 +29,7 @@ possible_values = [0.01 0.03 0.1 0.3 1 3 10 30];
 for C_i = 1:length(possible_values)
   for sigma_i = 1:length(possible_values)
     model= svmtrain(y, X, cstrcat('-t 2 -c ', num2str(C)));
-    predictions = svmpredict(model, Xval);
+    [predictions] = svmpredict(model, Xval);
     prediction_error =  mean(double(predictions ~= yval));
     if prediction_error < error
       error = prediction_error;
